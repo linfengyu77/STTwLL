@@ -258,15 +258,9 @@ def checkerboard(boardsize, squaresize):
 
 def slownessMap(type):
     # function for generating synthetic slowness maps
-    # INPUT: 'type'='ch' or 'sd' for checkerboard or smooth-discontinuous
+    # INPUT: 'type'= 'sd' for smooth-discontinuous
     
-    if type == 'ch':
-        # checkerboard image
-        ds = checkerboard((100,100), (10, 10)) > 0.5     # regular checkerboard
-        ds = np.pad(ds, [2, 2])                         # shifted checkerboard
-        ds = (ds[1:101, 1:101] - 0.5)/5
-        
-    elif type == 'sd':
+    if type == 'sd':
         # smooth variation with discontinuity
         ds_maskBar = np.zeros((100,100))
         ds_maskBar[:, 47:53] = 1
@@ -319,9 +313,9 @@ def col2im(mtx, image_size, block_size):
     sx = image_size[0] - p + 1
     sy = image_size[1] - q + 1
     result = np.zeros(image_size)
-    weight = np.zeros(image_size)  # weight记录每个单元格的数字重复加了多少遍
+    weight = np.zeros(image_size)  
     col = 0
-    # 沿着行移动，所以先保持列（i）不动，沿着行（j）走
+
     for i in range(sy):
         for j in range(sx):
             result[j:j + p, i:i + q] += mtx[:, col].reshape(block_size, order='F')
