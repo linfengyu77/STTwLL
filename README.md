@@ -5,7 +5,7 @@
 Refer to the test_sd.ipynb and test_marmousi.ipynb.
 
 ```
-### If you find this code is helpful, please cite
+### If you find this code helpful, please cite
 ```
 @article{wang_seismic_2024,
 	title = {Seismic {Traveltime} {Tomography} {With} {Label}-{Free} {Learning}},
